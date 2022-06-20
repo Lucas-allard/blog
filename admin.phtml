@@ -1,0 +1,159 @@
+<?php if(!isset($_SESSION['admin'])): ?>
+<section class="vh-100">
+  <div class="container-fluid h-custom">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-md-9 col-lg-6 col-xl-5">
+        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+          class="img-fluid" alt="Sample image">
+      </div>
+      <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+        <form method="post" action="admin.php">
+          <!-- Email input -->
+          <div class="form-outline mb-4">
+            <input type="text" id="form3Example3" class="form-control form-control-lg"
+              placeholder="Entrer votre nom d'utilisateur" name="username" />
+            <label class="form-label" for="form3Example3">Nom d'utilisateur</label>
+          </div>
+
+          <!-- Password input -->
+          <div class="form-outline mb-3">
+            <input type="password" id="form3Example4" class="form-control form-control-lg"
+              placeholder="Entrez votre mot de passe" name="password"/>
+            <label class="form-label" for="form3Example4">Mot de passe</label>
+          </div>
+
+          <div class="d-flex justify-content-between align-items-center">
+            <!-- Checkbox -->
+            <div class="form-check mb-0">
+              <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3" />
+              <label class="form-check-label" for="form2Example3">
+                Se rappeler de moi
+              </label>
+            </div>
+            <a href="#!" class="text-body">Mot de passe oublié ?</a>
+          </div>
+
+          <div class="text-center text-lg-start mt-4 pt-2">
+            <button type="submit" class="btn btn-primary btn-lg"
+              style="padding-left: 2.5rem; padding-right: 2.5rem;">Connexion</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+<?php else : ?>
+<div class="container">
+  <div class="row">
+    <button type="button" class="col-lg-12 container-sm btn btn-primary btn-sm mb-2"><a class="text-white" href="ajout_article.php">AJOUTER UN ARTICLE</a></button>
+    <div class="col-lg-6">
+        <!-- Main content -->
+        <?php foreach ($articleAdminList as $articleAdmin) : ?>
+        <div class="col-lg-12 mb-3">
+          <div class="card row-hover pos-relative py-3 px-3 mb-3 border-warning border-top-0 border-right-0 border-bottom-0 rounded-0">
+            <div class="row align-items-center">
+              <div class="col-md-8 mb-3 mb-sm-0">
+                <h5>
+                  <a href="detail.php?id_article=<?= $articleAdmin["ID_article"] ?>" class="text-primary"><?= $articleAdmin["title"] ?></a>
+                </h5>
+                <p class="text-sm"><span class="op-6">Posté par</span> <span class="text-black"><?= $articleAdmin["lastnameAuthor"]." ".$articleAdmin["nameAuthor"] ?></span> <span class="op-6"> le </span> <span class="text-black"><?= $articleAdmin["date"] ?></span>
+                    <p class="op-6">Catégorie : <span class="text-black"><?= $articleAdmin["categorie"] ?></span></p>
+                    
+                </p>
+                <div class="text-sm op-5"><?=  substr($articleAdmin["contentArticle"], 0, 150) ?> <a href="detail.php?id_article=<?= $articleAdmin["ID_article"] ?>">...</a></div>
+              </div>
+              <div class="col-md-4 op-7">
+                <div class="col text-center op-7">
+                    <ul class="list m-0">
+                        <li class="list-inline-item">
+                            <button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><a class="text-white" href="modif_article.php?id_edit=<?= $articleAdmin["ID_article"] ?>"><i class="fa fa-edit"></i></a></button>
+                        </li>
+                        <li class="list-inline-item">
+                            <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><a class="text-white" href="delete_article.php?id_delete=<?= $articleAdmin["ID_article"] ?>"><i class="fa fa-trash"></i></a></button>
+                        </li>
+                    </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <?php endforeach; ?>
+      </div>
+      <div class="col-lg-6">
+        <div class="row mb-4">
+          <div class="col-lg-6 mr-3">
+            <h5>Ajouter un nouvel auteur</h4>
+            <form method="post" action="admin.php">
+            <div class="form-outline mb-4">
+              <input type="text" id="form3Example3" class="form-control form-control-lg"
+                placeholder="Entrer le nom du nouvel auteur" name="new_lastname_author" />
+            </div>
+            <div class="form-outline mb-4">
+              <input type="text" id="form3Example3" class="form-control form-control-lg"
+                placeholder="Entrer le nom du nouvel auteur" name="new_name_author" />
+            </div>
+            <div class="text-center text-lg-start mt-4 pt-2">
+              <button type="submit" class="btn btn-primary btn-lg"
+                style="padding-left: 2.5rem; padding-right: 2.5rem;">Ajouter</button>
+            </div>
+          </div>
+          <div class="col-lg-6 mr-3">
+              <h5>Ajouter une nouvelle catégorie</h4>
+              <form method="post" action="admin.php">
+              <div class="form-outline mb-4">
+                <input type="text" id="form3Example3" class="form-control form-control-lg"
+                  placeholder="Saisir votre nouvelle categorie" name="new_category" />
+              </div>
+              <div class="text-center text-lg-start mt-4 pt-2">
+                <button type="submit" class="btn btn-primary btn-lg"
+                  style="padding-left: 2.5rem; padding-right: 2.5rem;">Ajouter</button>
+              </div>
+          </div>
+        </div>
+        <div class="row mt-2">
+          <div class="col-lg-6">
+          <h5>Auteurs disponible :</h5>
+          <div class="row">
+            <?php foreach ($authorsData as $author) : ?>
+            <p class="col-lg-6"><?= $author["lastnameAuthor"]." ".$author["nameAuthor"]; ?></p>
+            <div class="col-lg-6">
+              <div class="row text-center op-7">
+                  <ul class="list m-0">
+                      <li class="list-inline-item">
+                          <button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><a class="text-white" href="modif_author.php?id_edit=<?= $author["ID_author"] ?>"><i class="fa fa-edit"></i></a></button>
+                      </li>
+                      <li class="list-inline-item">
+                          <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><a class="text-white" href="delete_author.php?id_delete=<?= $author["ID_author"] ?>"><i class="fa fa-trash"></i></a></button>
+                      </li>
+                  </ul>
+              </div>
+            </div>
+            <?php endforeach; ?>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <h5>Catégorie disponible :</h5>
+          <div class="row">
+            <?php foreach ($categoriesData as $categorie) : ?>
+            <p class="col-lg-6"><?= $categorie["categorie"] ?></p>
+            <div class="col-lg-6">
+              <div class="row text-center op-7">
+                  <ul class="list m-0">
+                      <li class="list-inline-item">
+                          <button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><a class="text-white" href="modif_category.php?id_edit=<?= $categorie["ID_category"] ?>"><i class="fa fa-edit"></i></a></button>
+                      </li>
+                      <li class="list-inline-item">
+                          <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><a class="text-white" href="delete_category.php?id_delete=<?= $categorie["ID_category"] ?>"><i class="fa fa-trash"></i></a></button>
+                      </li>
+                  </ul>
+              </div>
+            </div>
+            <?php endforeach; ?>
+          </div>
+        </div>
+        </div>
+        
+      </div>
+      
+</div>
+<?php endif; ?>

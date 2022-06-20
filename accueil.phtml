@@ -1,0 +1,45 @@
+
+<div class="container">
+    <div class="row">
+        <div class="row gx-4 gx-lg-5">
+           <form>
+            <div class="form-floating mb-3">
+                <label for="search">Recherche d'article</label>
+                <input class="form-control" id="search" type="text" name="search"/>
+            </div>
+           </form>
+        </div>
+        
+        <div class="" id="searchResult">
+            
+        </div>
+        
+        <div class="row gx-4 gx-lg-5">
+            <div class="col-md-9 col-lg-8 col-xl-7">
+                <!-- Post preview-->
+                <?php foreach ($articleList as $article) : ?>
+                    <div class="post-preview">
+                        <a href="detail.php?id_article=<?= $article["ID_article"] ?>">
+                            <h2 class="post-title"><?= $article["title"] ?></h2>
+                            <h3 class="post-subtitle"><?= $article["categorie"] ?></h3>
+                            <p><em><?= $article["lastnameAuthor"]." ".$article["nameAuthor"] ?></em></p>
+                            <p><em><?= $article["date"] ?></em></p>
+                        </a>
+                        <p class="post-meta">
+                            <?= substr($article["contentArticle"], 0, 150); ?> <a href="detail.php?id_article=<?= $article["ID_article"] ?>">...</a>
+                        </p>
+                    </div>
+                    <!-- Divider-->
+                    <hr class="my-4" />
+                <?php endforeach; ?>
+            </div>
+            
+            <aside id="comments" class="col-md-3 col-lg-4">
+                 
+            </aside>
+            
+        </div>
+    </div>
+
+</div>
+    

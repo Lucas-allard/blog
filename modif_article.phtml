@@ -1,0 +1,66 @@
+<?php if (isset($_SESSION["admin"])) : ?>
+<div class="container px-5 my-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <div class="card border-0 rounded-3 shadow-lg">
+        <div class="card-body p-4">
+          <div class="text-center">
+            <div class="h1 fw-light">Modifier un article</div>
+            <p class="mb-4 text-muted">Veuillez à bien remplir tous les champs !</p>
+          </div>
+          
+          <form id="contactForm" data-sb-form-api-token="API_TOKEN" action="modif_article.php" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="id_article" value="<?= $id ?>"/>
+            <input type="hidden" name="image_path" value="<?= $data["image"] ?>"/>
+            <div class="form-floating mb-3">
+              <input class="form-control" id="title" type="text" placeholder="Titre" data-sb-validations="required" name="title" value="<?= $data["title"] ?>"/>
+              <label for="name">Titre</label>
+              <div class="invalid-feedback" data-sb-feedback="title:required">Un titre est requis.</div>
+            </div>
+            <!-- Message Input -->
+            <div class="form-floating mb-3">
+              <textarea class="form-control" id="message" type="text" placeholder="Contenu de votre article" style="height: 10rem;" data-sb-validations="required" name="content"><?= $data["contentArticle"]?></textarea>
+              <label for="message">Contenu</label>
+              <div class="invalid-feedback" data-sb-feedback="message:required">Un contenu est requis pour votre article.</div>
+            </div>
+            <select class="form-select mb-2 " id="message" type="text" data-sb-validations="required" name="author">
+                <!--<option selected>Choisir un auteur</option>-->
+                <?php foreach ($authors as $author) : ?>
+                  <?php if($data["ID_author"]  == $author["ID_author"]) : ?>
+                    <option  value="<?= $author["ID_author"] ?>" selected><?= $author["lastnameAuthor"]." ".$author["nameAuthor"]?></option>
+                  <?php else: ?>
+                    <option value="<?= $author["ID_author"] ?>"><?= $author["lastnameAuthor"]." ".$author["nameAuthor"] ?></option>
+                  <?php endif; ?>
+                <?php endforeach; ?>
+                
+          </select>
+            <!-- Categorie input -->
+            <select class="form-select mb-2" id="message" type="text" data-sb-validations="required" name="categorie">
+                <!--<option selected>Choisir une catégorie</option>-->
+                <?php foreach ($categories as $categorie) : ?>
+                  <?php if($data["ID_category"] == $categorie["ID_category"]) : ?>
+                    <option  value="<?= $categorie["ID_category"] ?>" selected><?= $categorie["categorie"] ?></option>
+                  <?php else: ?>
+                    <option value="<?= $categorie["ID_category"] ?>"><?= $categorie["categorie"] ?></option>
+                  <?php endif; ?>
+                <?php endforeach; ?>
+            </select>
+            <div class="form-floating mb-3">
+              <input class="form-control" type="file" name="image" value="<?= $data["image"] ?>"/>
+              <label for="image">Image</label>
+              <div class="invalid-feedback" data-sb-feedback="title:required">Un titre est requis.</div>
+            </div>
+            <div class="d-grid">
+              <input class="btn btn-primary btn-lg" type="submit" name="submit" value="Publier"/>
+            </div>
+          </form>
+          <!-- End of contact form -->
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<?php else : ?>
+  <?php header("location:accueil.php") ?>
+<?php endif; ?>

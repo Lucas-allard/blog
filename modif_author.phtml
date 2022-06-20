@@ -1,0 +1,22 @@
+<?php if (isset($_SESSION["admin"])) : ?>
+<div class="container col align-center">
+
+    <div class=" col-lg-6 mr-3">
+        <h5>Modifier l'auteur</h4>
+        <form method="post" action="modif_author.php">
+            <input type="hidden" name="id_author" value="<?= $id ?>"/>
+            <div class="form-outline mb-4">
+              <input type="text" id="form3Example3" class="form-control form-control-lg"
+                placeholder="Entrer le nom du nouvel auteur" name="new_lastname_author" value="<?= $author["lastnameAuthor"] ?>" />
+            </div>
+            <div class="form-outline mb-4">
+              <input type="text" id="form3Example3" class="form-control form-control-lg"
+                placeholder="Entrer le nom du nouvel auteur" name="new_name_author" value="<?= $author["nameAuthor"] ?>"/>
+            </div>
+            <div class="text-center text-lg-start mt-4 pt-2">
+              <button type="submit" class="btn btn-primary btn-lg"
+                style="padding-left: 2.5rem; padding-right: 2.5rem;" name="submit">Modifier</button>
+            </div>
+    </div>
+</div>
+<?php endif; ?>

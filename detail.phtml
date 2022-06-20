@@ -1,0 +1,53 @@
+<div class="container px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-md-10 col-lg-8 col-xl-7">
+            <!-- Post preview-->
+                <div class="post-preview">
+                        <h2 class="post-title"><?= $detailArticle["title"] ?></h2>
+                        <h3 class="post-subtitle"><?= $detailArticle["categorie"] ?></h3>
+                        <p><em><?= $detailArticle["lastnameAuthor"]." ".$detailArticle["nameAuthor"] ?></em></p>
+                        <p><em><?= $detailArticle["date"] ?></em></p>
+                        <div class="row">
+                            <p class="post-meta">
+                                <?= $detailArticle["contentArticle"]; ?>
+                            </p>  
+                            <img src="images/<?= $detailArticle["image"] ?>"></img>
+                        </div>
+                            
+                </div>
+                <!-- Divider-->
+                <hr class="my-4" />
+        </div>
+    </div>
+</div>
+<div class="container px-4 px-lg-5">
+    <?php if ($commentList) : ?>
+    <?php foreach ($commentList as $comment): ?>
+    <div class="card p-3 m-4">
+        <h4 class="post-title font-weight-bold text-primary"><?= $comment["lastnameComment"]." ".$comment["nameComment"]?></h2>
+        <p class="m-0"><small><?= $comment["dateComment"]; ?></small></p>
+        <p><?= $comment["contentComment"]; ?></p>
+    </div>
+    <?php endforeach; ?>
+    <?php else : ?>
+    <p class="text-primary align-center">Soyez le premier à commenter !</p>
+    <?php endif; ?>
+</div>
+<div class="container px-4 px-lg-5">
+    <form action="ajout_comment.php" method="post">
+        <input type="hidden" name="id_article" value="<?= $id ?>"/>
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Nom</label>
+            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Nom" name="lastname">
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlInput1">Prénom</label>
+            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Prenom" name="name">
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlTextarea1">Votre commentaire</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="content"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary mb-2 mt-2 justify-content-center">Envoyer</button>
+    </form>
+</div>

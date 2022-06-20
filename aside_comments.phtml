@@ -1,0 +1,10 @@
+<div>
+    <?php foreach ($comments as $comment) : ?>
+     <div class="card p-3 m-4">
+        <h4 class="post-title font-weight-bold text-primary"><?= $comment["lastnameComment"]." ".$comment["nameComment"]?></h2>
+        <a href="detail.php?id_article=<?= $comment["ID_article"] ?>"><?= $comment["title"] ?></a>
+        <p class="m-0"><small><?= $comment["dateComment"]; ?></small></p>
+        <p><?= $comment["contentComment"]; ?></p>
+    </div>
+    <?php endforeach; ?>
+</div>
