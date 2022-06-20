@@ -1,14 +1,3 @@
-<!-- PROJECT SHIELDS -->
-<!--
-*** This template uses markdown "reference style" links for readability.
-*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
-*** See the bottom of this document for the declaration of the reference variables
-*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
-*** https://www.markdownguide.org/basic-syntax/#reference-style-links
--->
-
-[![Contributors][contributors-shield]][contributors-url] [![Forks][forks-shield]][forks-url] [![Stargazers][stars-shield]][stars-url] [![Issues][issues-shield]][issues-url]
-
 <!-- ABOUT THE PROJECT -->
 ### Built With
 
@@ -56,25 +45,4 @@ Back-end :
 
 Lucas Allard - allard.lucas.97@gmail.com
 
-Project Link: [https://github.com/github_username/github_repo](https://github.com/github_username/github_repo)
-
-
-
-<!-- ACKNOWLEDGEMENTS -->
-## Acknowledgements
-
-<!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/NicolasBrondin/basic-readme-template.svg?style=flat-square
-[contributors-url]: https://github.com/NicolasBrondin/basic-readme-template/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/NicolasBrondin/basic-readme-template.svg?style=flat-square
-[forks-url]: https://github.com/NicolasBrondin/basic-readme-template/network/members
-[stars-shield]: https://img.shields.io/github/stars/NicolasBrondin/basic-readme-template.svg?style=flat-square
-[stars-url]: https://github.com/NicolasBrondin/basic-readme-template/stargazers
-[issues-shield]: https://img.shields.io/github/issues/NicolasBrondin/basic-readme-template.svg?style=flat-square
-[issues-url]: https://github.com/NicolasBrondin/basic-readme-template/issues
-[license-shield]: https://img.shields.io/github/license/NicolasBrondin/basic-readme-template.svg?style=flat-square
-[license-url]: https://github.com/NicolasBrondin/basic-readme-template/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/othneildrew
-[product-screenshot]: docs/cover.jpg
+Project Link: [https://github.com/Lucas-allard/blog](https://github.com/Lucas-allard/blog)
